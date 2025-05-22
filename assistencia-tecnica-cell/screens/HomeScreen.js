@@ -18,12 +18,12 @@ const  HomeScreen = ({ navigation }) => {
       dataFormatada = dataFormatada.slice(0, 5) + '/' + dataFormatada.slice(5, 9);
     }
 
-    return dataFormatada.slice(0, 10); // Exige o formato
+    return dataFormatada.slice(0, 10); 
   };
 
 
   const registro = async () => {
-    // Valida se os campos obrigatórios (nome e serviço) estão preenchidos
+    
     if (!nome || !servico || !date || !/^\d{2}\/\d{2}\/\d{4}$/.test(date)) {
       Alert.alert("Erro", "Por favor, preencha todos os campos obrigatórios (Nome, Serviço e Data).");
       return;
@@ -36,7 +36,7 @@ const  HomeScreen = ({ navigation }) => {
       telefone: telefone || 'Não preenchido',
     };
 
-    await salvaRegistro(newRecord); // Salva o registro no arquivo
+    await salvaRegistro(newRecord); 
     setNome('');
     setServico('');
     setTelefone('');

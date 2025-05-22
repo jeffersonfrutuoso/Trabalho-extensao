@@ -6,12 +6,12 @@ export const carregaRegistro = async () => {
   try {
     const fileData = await FileSystem.readAsStringAsync(fileUri);
     if (fileData) {
-      return JSON.parse(fileData); // Converte o JSON para um array
+      return JSON.parse(fileData); 
     }
-    return []; // Se o arquivo estiver vazio ou não for encontrado, retorna um array vazio
+    return []; 
   } catch (error) {
     console.log('Erro ao ler os registros:', error);
-    return []; // Se houver erro ao ler o arquivo, retorna um array vazio
+    return []; 
   }
 };
 
@@ -20,7 +20,7 @@ export const salvaRegistro = async (newRecord) => {
   const updatedRecords = [...records, newRecord];
 
   try {
-    await FileSystem.writeAsStringAsync(fileUri, JSON.stringify(updatedRecords)); // Salva os registros no arquivo
+    await FileSystem.writeAsStringAsync(fileUri, JSON.stringify(updatedRecords)); 
     console.log('Registro salvo com sucesso!');
   } catch (error) {
     console.log('Erro! Tente novamente.', error);

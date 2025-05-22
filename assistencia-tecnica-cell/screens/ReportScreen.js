@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import { carregaRegistro, excluiRegistro } from '../storage/dados';
 
-const ReportScreen = () => { //carrega dados e filtros
+const ReportScreen = () => { 
   const [registros, setRegistro] = useState([]);
   const [filteredRegistros, setFilteredRegistros] = useState([]);
   const [filtraNome, setFiltraNome] = useState('');
   const [filtraServico, setFiltraServico] = useState('');
   const [ordem, setOrdem] = useState('asc');
 
-  useEffect(() => { //carregar e exibir os registros
+  useEffect(() => { 
     async function fetchRegistros() {
       const loadedRegistros = await carregaRegistro();
       setRegistro(loadedRegistros);
@@ -19,7 +19,7 @@ const ReportScreen = () => { //carrega dados e filtros
     fetchRegistros();
   }, []);
 
-  // Exclusão de registro
+  
   const handleDelete = async (index) => {
     await excluiRegistro(index); 
     const updatedRegistros = await carregaRegistro();
@@ -27,7 +27,7 @@ const ReportScreen = () => { //carrega dados e filtros
     aplicaFiltros(updatedRegistros);
   };
 
-  // Filtros
+  
   const aplicaFiltros = () => {
     let dadoFiltrado = registros;
 
@@ -43,7 +43,7 @@ const ReportScreen = () => { //carrega dados e filtros
       );
     }
 
-    // Ordenação por data
+    
     dadoFiltrado = dadoFiltrado.sort((a, b) => {
       const dateA = new Date(a.date.split('/').reverse().join('-'));
       const dateB = new Date(b.date.split('/').reverse().join('-')); 
@@ -54,7 +54,7 @@ const ReportScreen = () => { //carrega dados e filtros
     setFilteredRegistros(dadoFiltrado);
   };
 
-  // Atualização do filtro
+  
   const handleFilterChange = () => {
     if (filtraNome.trim() === '' && filtraServico.trim() === '') {
       setFilteredRegistros(registros);
@@ -73,7 +73,7 @@ const ReportScreen = () => { //carrega dados e filtros
     <View style={styles.container}>
       <Text style={styles.titulo}>Relatório</Text>
 
-      {/* Filtra nome */}
+      
       <TextInput
         style={styles.input}
         placeholder="Buscar nome"
@@ -84,7 +84,7 @@ const ReportScreen = () => { //carrega dados e filtros
         }}
       />
 
-      {/* Filtra serviço */}
+      
       <TextInput
         style={styles.input}
         placeholder="Buscar serviço"
@@ -101,7 +101,7 @@ const ReportScreen = () => { //carrega dados e filtros
         </Text>
       </TouchableOpacity>
 
-      {/* Mostra registros de acordo com o filtro e mensagem caso negativo */}
+      
       {filteredRegistros.length > 0 ? (
         <FlatList
           data={filteredRegistros}
@@ -113,7 +113,7 @@ const ReportScreen = () => { //carrega dados e filtros
               <Text style={styles.recordText}><Text style={styles.bold}>Data:</Text> {item.date}</Text>
               <Text style={styles.recordText}><Text style={styles.bold}>Telefone:</Text> {item.telefone}</Text>
 
-              {/* Botão de exclusão */}
+              
               <TouchableOpacity 
                 style={styles.botaoExcluir} 
                 onPress={() => handleDelete(index)} 
