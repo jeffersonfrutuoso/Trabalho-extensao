@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "assistencia-tecnica-cell",
+    "slug": "assistencia-tecnica-cell",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.assistenciatecnicacell.app"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a5042495-073c-47f2-9432-324e5b3eaf49"
+      }
+    },
+    "plugins": [
+      "expo-asset"
+    ]
+  }
+}
